@@ -1,0 +1,54 @@
+version: '3.0'
+
+services:
+
+  nginx:
+    build:
+      context: ./docker/nginx
+    env_file:
+      - ./docker/nginx/.env
+    depends_on:
+      - php
+    command: nginx -g 'daemon off;'
+    volumes:
+      - ./docker/nginx/conf.d/default.nginx:/etc/nginx/conf.d/default.conf
+      - ./src/:/var/www/html/
+    networks:
+      - frontend
+      - backend
+
+  php:
+    build:
+      context: ./docker/php
+    volumes:
+      - ./docker/php/php.ini:/usr/local/etc/php/php.ini
+      - ./src/:/var/www/html/
+    networks:
+      - backend
+
+  mysql:
+    image: mysql:5.7
+    volumes:
+      - ./docker/mysql/data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    networks:
+      - backend
+
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:latest
+    env_file:
+      - ./docker/phpmyadmin/.env
+    environment:
+      - PMA_HOST=mysql
+    networks:
+      - frontend
+      - backend
+
+
+networks:
+  frontend:
+    external:
+      name: proxy_proxy
+  backend:
