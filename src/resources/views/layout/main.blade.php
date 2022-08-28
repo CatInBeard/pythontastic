@@ -16,9 +16,15 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                    @if(!Route::is('repl.*'))
                     <li class="nav-item px-2 pt-1">
                         <a class="btn btn-primary" href="{{route('repl.show')}}">Run python!</a>
                     </li>
+                    @else
+                    <li class="nav-item px-2 pt-1">
+                        <a class="nav-link" href="{{route('welcome.show')}}">Home</a>
+                    </li>
+                    @endif
                     <li class="nav-item px-2 pt-1">
                         <a class="btn btn-success" href="#">Sign in</a>
                     </li>
@@ -26,27 +32,7 @@
             </div>
         </nav>
         <div class="container-xxl mt-5 pt-3 px-1">
-            <div class="row mt-4">
-                <div class="col">
-                    <h1 class="text-center">Welcome to pythontastic.space</h1>
-                </div>
-            </div>
-            <div class="row mt-2">
-                <div class="col">
-                </div>
-                <div class="col">
-                    <div class="card p-1" style="min-width:25rem">
-                    <img src="/img/terminal.png" class="card-img-top" alt="terminal">
-                    <div class="card-body">
-                        <h5 class="card-title">Run your python code in browser!</h5>
-                        <p class="card-text">You need only a web browser to run your python programms.</p>
-                        <a href="{{route('repl.show')}}" class="btn btn-primary">Try it now!</a>
-                    </div>
-                    </div>
-                </div>
-                <div class="col">
-                </div>
-            </div>
+        @yield('body')
         </div>
     </body>
 </html>

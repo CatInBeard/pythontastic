@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ReplController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,4 +14,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::view('/', 'welcome')->name("welcome");
+Route::view('/', 'welcome')->name("welcome.show");
+
+Route::get('/repl',[ReplController::class, 'show'])->name("repl.show");
+
+Route::post('/repl',[ReplController::class, 'run'])->name("repl.run");
