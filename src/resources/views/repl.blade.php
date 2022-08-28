@@ -1,4 +1,7 @@
 @extends ("layout.main")
+
+@section ("title", "python REPL")
+
 @section ("body")
     <div class="row">
         <div class="col">
@@ -14,6 +17,7 @@
                 </form>
                 @isset($output)
                     <hr class="my-1">
+                    <h4>Output:</h4>
                     <span>{{$output}}</span>
                 @endisset
             </div>
