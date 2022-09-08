@@ -18,7 +18,7 @@
                 @isset($output)
                     <hr class="my-1">
                     <h4>Output:</h4>
-                    <span>{{$output}}</span>
+                    <pre>{{$output}}</pre>
                 @endisset
             </div>
         </div>

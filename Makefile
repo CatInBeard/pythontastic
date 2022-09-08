@@ -12,3 +12,5 @@ proxy-start:
 	cd ./proxy && docker-compose up -d 
 proxy-stop:
 	cd ./proxy && docker-compose down
+rebuild:
+	docker-compose build --no-cache app

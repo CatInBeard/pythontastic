@@ -15,7 +15,12 @@ class ReplController extends Controller
             $output = "Nothing to run!";
         }
         else{
-            $output = shell_exec($code);
+            $pathToPythonTmpDir = __DIR__."/../../../storage/app/tmp/";
+            $tmpFileName = time().".py";
+            file_put_contents($pathToPythonTmpDir.$tmpFileName,$code);
+            $realcode ="cd " . $pathToPythonTmpDir . "; python3 " . $tmpFileName." 2>&1";
+            $output = shell_exec($realcode);
+            unlink($pathToPythonTmpDir.$tmpFileName);
         }
         return view("repl",compact('code', 'output'));
     }
