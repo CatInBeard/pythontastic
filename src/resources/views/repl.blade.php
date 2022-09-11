@@ -32,7 +32,7 @@
     </div>
     <script>
         window.onload = function(){
-            repl = new codeExecutableControl("code")
+            repl = new codeExecutableControl("code","code-output")
             textareaControl = new textareaTabControl("code")
         }
     </script>

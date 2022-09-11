@@ -1,9 +1,9 @@
 class codeExecutableControl{
-    constructor(elmentId){
+    constructor(codeElmentId,outputElmentId){
         function runCode(evt) {
             evt.preventDefault();
-            let codeText = document.getElementById('code').value;
-            let outputObject = document.getElementById('code-output');
+            let codeText = document.getElementById(codeElmentId).value;
+            let outputObject = document.getElementById(outputElmentId);
             let url = "/api/run"
             $.ajax({
             type: "POST",
@@ -17,7 +17,12 @@ class codeExecutableControl{
                 catch(e){
                     return;
                 }
-                outputObject.innerHTML = result + "<hr>" + outputObject.innerHTML;
+                if(outputObject.innerHTML){
+                    outputObject.innerHTML = result + "<hr>" + outputObject.innerHTML;
+                }
+                else{
+                    outputObject.innerHTML = result;
+                }
             },
             error: function(){
                 alert("Something went wrong, please try again later!")
