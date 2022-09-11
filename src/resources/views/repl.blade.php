@@ -18,6 +18,9 @@
                     </div>  
                     <div class="form-group mt-2">
                         <input type="submit" class="btn btn-primary" value="RUN!">
+                        <div class="d-none" id="loading">
+                            <img src="/img/loading.png">
+                        </div>
                     </div>
                 </form>
                     <hr class="my-1">
@@ -32,7 +35,7 @@
     </div>
     <script>
         window.onload = function(){
-            repl = new codeExecutableControl("code","code-output")
+            repl = new codeExecutableControl("code","code-output","loading")
             textareaControl = new textareaTabControl("code")
         }
     </script>

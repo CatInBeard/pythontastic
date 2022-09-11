@@ -1,15 +1,21 @@
 class codeExecutableControl{
-    constructor(codeElmentId,outputElmentId){
+    constructor(codeElmentId,outputElmentId="code-output",loadingElmentId="loading"){
         function runCode(evt) {
+
             evt.preventDefault();
             let codeText = document.getElementById(codeElmentId).value;
+            let loadingObject = document.getElementById(loadingElmentId);
             let outputObject = document.getElementById(outputElmentId);
+
+            loadingObject.classList.remove("d-none");
+
             let url = "/api/run"
             $.ajax({
             type: "POST",
             url: url,
             data: {code: codeText},
             success: function(response){
+                loadingObject.classList.add("d-none");
                 let result ="";
                 try{
                     result = JSON.parse(response).result;
@@ -25,6 +31,7 @@ class codeExecutableControl{
                 }
             },
             error: function(){
+                loadingObject.classList.add("d-none");
                 alert("Something went wrong, please try again later!")
             }
             });
