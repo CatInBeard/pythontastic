@@ -11,8 +11,8 @@
     <div class="row mt-2">
         <div class="col">
         </div>
-        <div class="col">
-            <div class="card p-1" style="min-width:25rem">
+        <div class="col-10">
+            <div class="card p-1 w-100">
             <img src="/img/terminal.png" class="card-img-top" alt="terminal">
             <div class="card-body">
                 <h5 class="card-title">Run your python code in browser!</h5>
