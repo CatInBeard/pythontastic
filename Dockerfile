@@ -17,4 +17,6 @@ COPY --chown=www-data:www-data src .
 
 RUN composer install
 
+RUN php artisan key:generate
+
 ENTRYPOINT php-fpm
