@@ -4,7 +4,7 @@ all-restart: all-stop all-start
 help:
 	echo "help"
 start:
-	docker-compose up -d
+	docker-compose up -d --build
 stop:
 	docker-compose down
 restart: stop start
@@ -12,5 +12,3 @@ proxy-start:
 	cd ./proxy && docker-compose up -d 
 proxy-stop:
 	cd ./proxy && docker-compose down
-rebuild:
-	docker-compose build --no-cache app

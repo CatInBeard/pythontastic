@@ -35,6 +35,13 @@ services:
     networks:
       - backend
 
+  sandbox:
+    build:
+      context: ./docker/sandbox
+    privileged: yes
+    networks:
+      - backend
+
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin:latest
