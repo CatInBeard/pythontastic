@@ -4,6 +4,6 @@ RUN apk add --no-cache php
 
 WORKDIR /var/www/html
 
-COPY --chown=www-data:www-data . .
+COPY . .
 
 CMD ["nginx", "-g", "daemon off;"]
