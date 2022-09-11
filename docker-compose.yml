@@ -5,6 +5,9 @@ services:
   nginx:
     build:
       context: ./docker/nginx
+    ports:
+      - 80:80
+      - 443:443
     env_file:
       - ./docker/nginx/.env
     depends_on:
@@ -52,15 +55,6 @@ services:
     networks:
       - frontend
       - backend
-
-  proxy:
-    image: jwilder/nginx-proxy
-    ports:
-      - 80:80
-    volumes:
-      - /var/run/docker.sock:/tmp/docker.sock:ro
-    networks:
-      - frontend
 
 
 networks:
