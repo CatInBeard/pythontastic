@@ -7,7 +7,6 @@ services:
       context: ./docker/nginx
     ports:
       - 80:80
-      - 443:443
     env_file:
       - ./docker/nginx/.env
     depends_on:
@@ -48,6 +47,8 @@ services:
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin:latest
+    ports:
+      - 1500:80
     env_file:
       - ./docker/phpmyadmin/.env
     environment:
