@@ -15,4 +15,6 @@ WORKDIR /var/www/html
 
 COPY --chown=www-data:www-data src .
 
+RUN composer install
+
 ENTRYPOINT php-fpm
