@@ -17,25 +17,25 @@
                     <textarea id="code" class="form-control" name="code" style="min-height:10rem">@isset($code){{$code}}@endisset</textarea>
                     </div>  
                     <div class="form-group mt-2">
-                        <input type="submit" class="btn btn-primary" value="RUN!">
+                        <input type="submit" class="btn btn-primary" id="submit-button" value="RUN!">
                         <div class="d-none" id="loading">
                             <img src="/img/loading.png">
                         </div>
                     </div>
                 </form>
-                    <hr class="my-1">
-                    <h4>Output:</h4>
+                <hr class="my-1">
+                <h4>Output:</h4>
+                <div id="code-output">
                 @if(isset($output))
-                    <pre id="code-output">{{$output}}</pre>
-                @else
-                    <pre id="code-output"></pre>
+                    <pre>{{$output}}</pre>
                 @endif
+                </div>
             </div>
         </div>
     </div>
     <script>
         window.onload = function(){
-            repl = new codeExecutableControl("code","code-output","loading")
+            repl = new codeExecutableControl("code-form", "code", "code-output", "loading", "submit-button" , "{{route('api.python.run')}}")
             textareaControl = new textareaTabControl("code")
         }
     </script>

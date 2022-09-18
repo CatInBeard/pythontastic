@@ -13,9 +13,11 @@ class ReplController extends Controller
         $code = $request->post('code');
         if($code === null){
             $output = "Nothing to run!";
+            $startTime = null;
+            $endTime = null;
         }
         else{
-            $output = $this->runPython($code);
+            [$output,$startTime,$endTime] = $this->runPython($code);
         }
         return view("repl",compact('code', 'output'));
     }
@@ -23,7 +25,9 @@ class ReplController extends Controller
         $code = $request->post('code');
         $result = "err";
         if($code !== null){
-            $result = $this->runPython($code);
+            [$result,$startTime,$endTime] = $this->runPython($code);
+            $runTime = ($endTime - $startTime);
+            return json_encode(compact('result','runTime'));
         }
         return json_encode(compact('result'));
     }
@@ -41,8 +45,9 @@ class ReplController extends Controller
         shell_exec($copyCode);
 
         $sandboxCode = 'sshpass -p "123" ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null root@sandbox docker run -i --network none --rm --name pythonsandbox -v /app/'.$tmpName.':/usr/src/myapp -w /usr/src/myapp python:3 timeout 2s python main.py  2>&1';
+        $startTime = microtime(true);
         $output = shell_exec($sandboxCode);
-
+        $endTime = microtime(true);
         $rmCode = "sshpass -p \"123\" ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null root@sandbox rm -R /app/{$tmpName} ";
         shell_exec($rmCode);
 
@@ -51,6 +56,6 @@ class ReplController extends Controller
         $outputParts = explode("\n",$output);
         array_shift($outputParts);
         $output = implode("\n", $outputParts);
-        return $output;
+        return [$output,$startTime,$endTime];
     }
 }

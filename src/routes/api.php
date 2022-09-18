@@ -19,4 +19,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post('/run', [ReplController::class, 'apiRun'])->name("api.run");
+Route::post('/run', [ReplController::class, 'apiRun'])->name("api.python.run");
