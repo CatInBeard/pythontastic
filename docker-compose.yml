@@ -6,7 +6,7 @@ services:
     build:
       context: ./src
     ports:
-      - 80:80
+      - 8000:80
     env_file:
       - ./docker/nginx/.env
     depends_on:
