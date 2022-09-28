@@ -1,6 +1,7 @@
 @extends ("layout.main")
 
 @section("head_add")
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
     <script src="/scripts/textarea_tab.js"></script>
     <script src="/scripts/send_python.js"></script>
 @stop
@@ -16,10 +17,14 @@
                     <div class="form-group">
                     <textarea id="code" class="form-control" name="code" style="min-height:10rem">@isset($code){{$code}}@endisset</textarea>
                     </div>  
-                    <div class="form-group mt-2">
-                        <input type="submit" class="btn btn-primary" id="submit-button" value="RUN!">
-                        <div class="d-none" id="loading">
-                            <img src="/img/loading.png">
+                    <div class="form-group mt-2 d-flex flex-row">
+                        <div class="p-1">
+                            <input type="submit" class="btn btn-primary" id="submit-button" value="RUN!">
+                        </div>
+                        <div class="pl-2">
+                            <div class="d-none fs-2 ml-3" id="loading">
+                                <i class="bi bi-hourglass-split"></i>
+                            </div>
                         </div>
                     </div>
                 </form>
