@@ -10,4 +10,5 @@ Python online repl
 5. run inside php container `php artisan key:generate`
 6. website runs on http://localhost:8000, phpMyAdmin runs on http://localhost:1500
 7. create database and user with phpMyAdmin and add configuration to src/.env
-8. add nginx reverse proxy with [this](https://gist.github.com/CatInBeard/ff3962217283a821ab22f6411557216e) configuration
+8. run inside php container `php artisan migrate`
+9. add nginx reverse proxy with [this](https://gist.github.com/CatInBeard/ff3962217283a821ab22f6411557216e) configuration
