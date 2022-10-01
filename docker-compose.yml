@@ -32,8 +32,8 @@ services:
     image: mysql:5.7
     volumes:
       - ./docker/mysql/data:/var/lib/mysql
-    environment:
-      MYSQL_ROOT_PASSWORD: root
+    env_file:
+      - ./docker/mysql/.env
     networks:
       - backend
 
