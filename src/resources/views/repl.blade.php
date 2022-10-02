@@ -1,7 +1,6 @@
-@extends ("layout.main")
+@extends ("layouts.main")
 
 @section("head_add")
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
     <script src="/scripts/textarea_tab.js"></script>
     <script src="/scripts/send_python.js"></script>
 @stop

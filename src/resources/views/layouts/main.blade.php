@@ -6,6 +6,7 @@
         <title>@yield('title') | pythontastic.space</title>
 
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css" rel="stylesheet" >
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
         <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
         @yield('head_add')        
@@ -18,22 +19,24 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                    <li class="nav-item px-2 pt-1">
+                        <a class="nav-link" href="{{route('welcome.show')}}"><i class="bi bi-house-door-fill"></i></a>
+                    </li>
+                    <li class="nav-item px-2 pt-1">
+                        <a class="btn btn-success" href="{{route('user.auth.show')}}">Sign in</a>
+                    </li>
+                    <li class="nav-item px-2 pt-1">
+                        <a class="btn btn-outline-success" href="{{route('user.reg.show')}}">Sign up</a>
+                    </li>
                     @if(!Route::is('repl.*'))
                     <li class="nav-item px-2 pt-1">
-                        <a class="btn btn-primary" href="{{route('repl.show')}}">Run python!</a>
-                    </li>
-                    @else
-                    <li class="nav-item px-2 pt-1">
-                        <a class="nav-link" href="{{route('welcome.show')}}">Home</a>
+                        <a class="btn btn-primary" href="{{route('repl.show')}}">Run python!<i class="bi bi-play-fill"></i></a>
                     </li>
                     @endif
-                    <li class="nav-item px-2 pt-1">
-                        <a class="btn btn-success" href="#">Sign in</a>
-                    </li>
                 </ul>
             </div>
         </nav>
-        <div class="container-xxl mt-5 pt-3 px-1 min-vh-100">
+        <div class="container mt-5 pt-3 px-1 min-vh-100">
         @yield('body')
         </div>
         <footer class="container-xxl d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
