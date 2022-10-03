@@ -22,12 +22,14 @@
                     <li class="nav-item px-2 pt-1">
                         <a class="nav-link" href="{{route('welcome.show')}}"><i class="bi bi-house-door-fill"></i></a>
                     </li>
+                    @guest
                     <li class="nav-item px-2 pt-1">
                         <a class="btn btn-success" href="{{route('user.auth.show')}}">Sign in</a>
                     </li>
                     <li class="nav-item px-2 pt-1">
                         <a class="btn btn-outline-success" href="{{route('user.reg.show')}}">Sign up</a>
                     </li>
+                    @endguest
                     @if(!Route::is('repl.*'))
                     <li class="nav-item px-2 pt-1">
                         <a class="btn btn-primary" href="{{route('repl.show')}}">Run python!<i class="bi bi-play-fill"></i></a>
