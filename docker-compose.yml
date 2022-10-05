@@ -56,7 +56,16 @@ services:
     networks:
       - frontend
       - backend
-
+  redis:
+      image: "redis:alpine"
+      ports:
+      - "6379:6379"
+      volumes:
+      - ./docker/redis/data:/var/lib/redis
+      env_file:
+      - ./docker/redis/.env
+      networks:
+      - backend
 
 networks:
   frontend:
