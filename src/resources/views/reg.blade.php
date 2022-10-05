@@ -31,6 +31,12 @@
             <form method="post">
                 @csrf
                 <div class="form-group pb-2">
+                    <label for="username" class="pb-1">
+                        Username:
+                    </label>
+                    <input required class="form-control" type="text" name="username" id="username" placeholder="newUser123">
+                </div>  
+                <div class="form-group pb-2">
                     <label for="email" class="pb-1">
                         Email:
                     </label>

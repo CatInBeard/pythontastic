@@ -30,6 +30,14 @@
                         <a class="btn btn-outline-success" href="{{route('user.reg.show')}}">Sign up</a>
                     </li>
                     @endguest
+                    @auth
+                    <li class="nav-item px-2 pt-1">
+                        <a class="nav-link" href="{{route('user.profile.show')}}"><i class="bi bi-person-circle"></i></a>
+                    </li>
+                    <li class="nav-item px-2 pt-1">
+                        <a class="btn btn-outline-success" href="{{route('user.logout')}}"><i class="bi bi-box-arrow-left"></i></a>
+                    </li>
+                    @endauth
                     @if(!Route::is('repl.*'))
                     <li class="nav-item px-2 pt-1">
                         <a class="btn btn-primary" href="{{route('repl.show')}}">Run python!<i class="bi bi-play-fill"></i></a>

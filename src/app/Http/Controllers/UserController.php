@@ -42,7 +42,8 @@ class UserController extends Controller
     {
         $credentials = $request->validate([
             'email' => ['required', 'email'],
-            'password' => ['required'],
+            'username' => ['required', 'max:50', "min:3"],
+            'password' => ['required', "min:6"],
             'password-confirm' => ['required'],
         ]);
 
@@ -59,9 +60,16 @@ class UserController extends Controller
                 'sigUp' => 'Email is allready used!',
             ])->onlyInput('email');
         }
+
+        if($User){
+            return back()->withErrors([
+                'sigUp' => 'Username is allready used!',
+            ])->onlyInput('email')->onlyInput('username')->onlyInput('password');
+        }
+
         else{
             User::create([
-                'name'     => $credentials['email'],
+                'username'     => $credentials['username'],
                 'password' => Hash::make($credentials['password']),
                 'email'    => $credentials['email'],
             ]);

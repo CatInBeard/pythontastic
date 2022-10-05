@@ -25,6 +25,10 @@ Route::get('/auth',[UserController::class, 'showAuth'])->name("user.auth.show");
 
 Route::post('/auth',[UserController::class, 'runAuth'])->name("user.auth.run");
 
+Route::get('/profile',[UserController::class, 'showProfile'])->name("user.profile.show");
+
+Route::get('/logout',[UserController::class, 'logout'])->name("user.logout");
+
 Route::get('/reg',[UserController::class, 'showReg'])->name("user.reg.show");
 
 Route::post('/reg',[UserController::class, 'runReg'])->name("user.reg.run");
