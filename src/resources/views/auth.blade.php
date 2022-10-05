@@ -6,16 +6,16 @@
 @section ("title", "auth")
 
 @section ("body")
-    <div class="row justify-content-center">
-        <div class="col-12 col-md-6 align-self-center">   
+    <div class="row">
+        <div class="col-12 col-md-6 offset-md-3">   
             <h1>
                 Sign in    
             </h1>
         </div>
     </div>
     @if ($errors->any())
-    <div class="row justify-content-center">
-        <div class="col-12 col-md-6 align-self-center">
+    <div class="row">
+        <div class="col-12 col-md-6 offset-md-3">
             <div class="alert alert-danger">
                 <ul>
                     @foreach ($errors->all() as $error)
@@ -26,8 +26,8 @@
         </div>
     </div>  
     @endif
-    <div class="row justify-content-center">
-        <div class="col-12 col-md-6 align-self-center">   
+    <div class="row">
+        <div class="col-12 col-md-6 offset-md-3">   
             <form method="post" action="{{route('user.auth.run')}}">
                 @csrf
                 <div class="form-group pb-2">
@@ -48,8 +48,8 @@
             </form>
         </div>
     </div>
-    <div class="row justify-content-center">
-        <div class="col-12 col-md-6 align-self-center pt-3">
+    <div class="row">
+        <div class="col-12 col-md-6 offset-md-3 pt-3">
             <a href="{{route('user.reg.show')}}" class="text-muted">Sign up</a>
         </div>    
     </div>

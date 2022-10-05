@@ -33,6 +33,11 @@ class UserController extends Controller
         ])->onlyInput('email');
     }
 
+    function logout(){
+        Auth::logout();
+        return redirect(route('welcome.show'));
+    }
+
     function showReg()
     {
         return view("reg");
@@ -60,6 +65,8 @@ class UserController extends Controller
                 'sigUp' => 'Email is allready used!',
             ])->onlyInput('email');
         }
+
+        $User = User::where('username', $credentials['username'])->first();
 
         if($User){
             return back()->withErrors([
