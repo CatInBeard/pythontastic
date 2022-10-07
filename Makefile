@@ -8,4 +8,7 @@ build:
 	docker-compose build
 stop:
 	docker-compose down
+pull:
+	git pull
 restart: build stop start-only
+update: pull restart
