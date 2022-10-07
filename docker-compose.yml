@@ -22,6 +22,10 @@ services:
   php:
     build:
       context: .
+    depends_on:
+      - mysql
+      - redis
+      - sandbox
     volumes:
       - ./docker/php/php.ini:/usr/local/etc/php/php.ini
       - ./src/.env:/var/www/html/.env
@@ -36,14 +40,21 @@ services:
       - ./docker/mysql/.env
     networks:
       - backend
-
+  redis:
+    build:
+      context: ./docker/redis
+    volumes:
+    - ./docker/redis/data:/var/lib/redis
+    env_file:
+    - ./docker/redis/.env
+    networks:
+    - backend
   sandbox:
     build:
       context: ./docker/sandbox
     privileged: yes
     networks:
       - backend
-
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin:latest
@@ -55,16 +66,6 @@ services:
       - PMA_HOST=mysql
     networks:
       - frontend
-      - backend
-  redis:
-      image: "redis:alpine"
-      ports:
-      - "6379:6379"
-      volumes:
-      - ./docker/redis/data:/var/lib/redis
-      env_file:
-      - ./docker/redis/.env
-      networks:
       - backend
 
 networks:
