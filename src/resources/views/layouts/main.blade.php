@@ -46,7 +46,7 @@
                 </ul>
             </div>
         </nav>
-        <div class="container mt-5 pt-3 px-1 min-vh-100">
+        <div class="container mt-5 pt-3 min-vh-100">
         @yield('body')
         </div>
         <footer class="container-xxl d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
