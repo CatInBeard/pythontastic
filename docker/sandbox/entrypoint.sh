@@ -16,7 +16,7 @@ while ! docker info; do
 done
 
 # Import pre-installed images
-FILE=/usr/src/app/python3.tar.gz
+PYTON3FILE=/usr/src/app/python3.tar.gz
 
 if test -f "$PYTON3FILE"; then
     docker load < "$PYTON3FILE"
