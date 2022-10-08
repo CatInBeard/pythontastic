@@ -47,5 +47,13 @@ class codeExecutableControl{
         document.getElementById(formElmentId).addEventListener(
             'submit', runCode, false
         );
+
+
+        document.getElementById(codeElmentId).onkeydown = function(e){
+            if ((e.keyCode == 10 || e.keyCode == 13) && e.ctrlKey){
+                runCode(e);
+            }
+        }; 
+
     }
 }
