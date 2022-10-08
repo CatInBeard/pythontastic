@@ -19,7 +19,7 @@ done
 PYTON3FILE=/usr/src/app/python3.tar.gz
 
 if test -f "$PYTON3FILE"; then
-    docker load < "$PYTON3FILE"
+    docker load < "$PYTON3FILE" || docker pull python:3 && docker save python:3 > "$PYTON3FILE"
 else 
     docker pull python:3
     docker save python:3 > "$PYTON3FILE"
