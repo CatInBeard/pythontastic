@@ -14,6 +14,6 @@ RUN mkdir /app
 
 EXPOSE 22
 
-COPY . /bin
+COPY ./entrypoint.sh /bin
 
 ENTRYPOINT ["entrypoint.sh"]

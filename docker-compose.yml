@@ -52,6 +52,8 @@ services:
   sandbox:
     build:
       context: ./docker/sandbox
+    volumes:
+    - ./docker/sandbox/images:/usr/src/app
     privileged: yes
     networks:
       - backend
