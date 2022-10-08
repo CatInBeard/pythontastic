@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ReplController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,14 +22,14 @@ Route::get('/repl',[ReplController::class, 'show'])->name("repl.show");
 
 Route::post('/repl',[ReplController::class, 'run'])->name("repl.run");
 
-Route::get('/auth',[UserController::class, 'showAuth'])->name("user.auth.show");
+Route::get('/auth',[AuthController::class, 'showAuth'])->name("user.auth.show");
 
-Route::post('/auth',[UserController::class, 'runAuth'])->name("user.auth.run");
+Route::post('/auth',[AuthController::class, 'runAuth'])->name("user.auth.run");
 
-Route::get('/profile',[UserController::class, 'showProfile'])->name("user.profile.show");
+Route::get('/logout',[AuthController::class, 'logout'])->name("user.logout");
 
-Route::get('/logout',[UserController::class, 'logout'])->name("user.logout");
+Route::get('/reg',[AuthController::class, 'showReg'])->name("user.reg.show");
 
-Route::get('/reg',[UserController::class, 'showReg'])->name("user.reg.show");
+Route::post('/reg',[AuthController::class, 'runReg'])->name("user.reg.run");
 
-Route::post('/reg',[UserController::class, 'runReg'])->name("user.reg.run");
+Route::get('/profile',[UserController::class, 'showProfile'])->name("user.profile.show")->middleware('auth');
