@@ -57,7 +57,8 @@ class TelegramRepository{
                 $this->sendTextMessage($chatId,"Welcome to help!");
             break;
             default:
-                $this->sendTextMessage($chatId,PytonRunRepository::runCodeFromText($messageText) ?? "Something went wrong(");
+                [$result,$startTime,$endTime] = PytonRunRepository::runCodeFromText($messageText);
+                $this->sendTextMessage($chatId, $result ?? "Something went wrong(");
         }
         return "ok";
     }
