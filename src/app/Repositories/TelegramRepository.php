@@ -34,13 +34,20 @@ class TelegramRepository{
         ]);
         return $response->successful() ? $webhook_url : false;
     }
-    public function sendTextMessage($chatId,$messageText)
+    public function sendTextMessage($chatId,$messageText, $reply = false)
     {
         $telegramUrl = "https://api.telegram.org/bot".$this->telegramToken."/sendMessage";
-        $response = Http::get($telegramUrl,[
+
+        $data = [
             "chat_id" => $chatId,
             "text" => $messageText,
-        ]);
+        ];
+
+        if($reply){
+            $data['reply_to_message_id'] = $reply;
+        }
+
+        $response = Http::get($telegramUrl,$data);
         return $response->successful();
     }
     public function parseWebhook($data){
@@ -48,17 +55,18 @@ class TelegramRepository{
             return "ok";
         }
         $messageText = $data['message']['text'];
+        $messageID = $data['message']['message_id'];
         $chatId = $data['message']['chat']['id'];
         switch($messageText){
             case "/start":
-                $this->sendTextMessage($chatId,"Welcome!");
+                $this->sendTextMessage($chatId,"Welcome! Send Me your python code, and I'll run it...");
             break;
             case "/help":
-                $this->sendTextMessage($chatId,"Welcome to help!");
+                $this->sendTextMessage($chatId,"Just send Me your python code. For example send \"print(1)\"");
             break;
             default:
                 [$result,$startTime,$endTime] = PytonRunRepository::runCodeFromText($messageText);
-                $this->sendTextMessage($chatId, $result ?? "Something went wrong(");
+                $this->sendTextMessage($chatId, $result ?? "Something went wrong(",$messageID);
         }
         return "ok";
     }
