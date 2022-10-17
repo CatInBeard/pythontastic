@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ReplController;
+use App\Http\Controllers\TelegramController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,4 +22,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::post('/run', [ReplController::class, 'apiRun'])->name("api.python.run");
 
-Route::post('/telegramWebhook', [ReplController::class, 'parseWebhook'])->name("api.telegram.webhook");
+Route::post('/telegramWebhook', [TelegramController::class, 'receiveWebhook'])->name("api.telegram.webhook");

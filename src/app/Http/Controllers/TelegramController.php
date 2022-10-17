@@ -12,7 +12,7 @@ class TelegramController extends Controller
         $Telegram = new TelegramRepository();
         if ($request->isJson()) {
             $data = $request->json()->all();
-            return parseWebhook($data);
+            return $Telegram->parseWebhook($data);
         }
 
         abort(400);

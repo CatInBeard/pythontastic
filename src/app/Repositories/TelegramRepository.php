@@ -39,7 +39,7 @@ class TelegramRepository{
         $telegramUrl = "https://api.telegram.org/bot".$this->telegramToken."/sendMessage";
         $response = Http::get($telegramUrl,[
             "chat_id" => $chatId,
-            "text" => $this->messageText,
+            "text" => $messageText,
         ]);
         return $response->successful();
     }
@@ -47,9 +47,9 @@ class TelegramRepository{
         if(!isset($data['message'])){
             return "ok";
         }
-        $text = $data['message']['text'];
+        $messageText = $data['message']['text'];
         $chatId = $data['message']['chat']['id'];
-        switch($text){
+        switch($messageText){
             case "/start":
                 $this->sendTextMessage($chatId,"Welcome!");
             break;
@@ -57,7 +57,7 @@ class TelegramRepository{
                 $this->sendTextMessage($chatId,"Welcome to help!");
             break;
             default:
-                $this->sendTextMessage($chatId,PytonRunRepository::runCodeFromText($code) ?? "Something went wrong(");
+                $this->sendTextMessage($chatId,PytonRunRepository::runCodeFromText($messageText) ?? "Something went wrong(");
         }
         return "ok";
     }
