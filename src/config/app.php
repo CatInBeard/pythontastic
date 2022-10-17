@@ -211,4 +211,16 @@ return [
         // 'ExampleClass' => App\Example\ExampleClass::class,
     ])->toArray(),
 
+    /*
+    |--------------------------------------------------------------------------
+    | Telegram
+    |--------------------------------------------------------------------------
+    |
+    | telegram_bot_token used to send messages to telegram
+    |
+    */
+
+    'telegram_bot_token' => env('TELEGRAM_BOT_TOKEN', NULL),
+    'telegram_bot_secret_token' => env('TELEGRAM_BOT_SECRET_TOKEN', NULL),
+
 ];
