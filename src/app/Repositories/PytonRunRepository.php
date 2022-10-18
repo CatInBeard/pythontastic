@@ -25,7 +25,7 @@ class PytonRunRepository implements PytonRunRepositoryInterface
         shell_exec($copyCode);
 
         $network = $blockNetwork ? "--network none" : "";
-        $sandboxCode = 'sshpass -p "123" ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null root@sandbox docker run -i '.$network.' --rm --name pythonsandbox -v /app/'.$tmpName.':/usr/src/myapp -w /usr/src/myapp python:3 timeout '.$timeLimitSeconds.'s python main.py 2>&1';
+        $sandboxCode = 'sshpass -p "123" ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null root@sandbox docker run -i '.$network.' --rm  --name pythonsandbox_'.$tmpName.' -v /app/'.$tmpName.':/usr/src/myapp -w /usr/src/myapp python:3 timeout '.$timeLimitSeconds.'s python main.py 2>&1';
         $startTime = microtime(true);
         $output = shell_exec($sandboxCode);
         $endTime = microtime(true);
