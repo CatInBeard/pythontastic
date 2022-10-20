@@ -1,5 +1,6 @@
 # pythontastic
 Python online repl  
+[![uptime](https://img.shields.io/uptimerobot/ratio/m792899048-fe75220d9a0735c7d8a9a253)](https://stats.uptimerobot.com/Dl8Q0soGxj)  
 [pythontastic.space](https://pythontastic.space)  
 ![Repl example](https://pythontastic.space/img/terminal.png)
 ## Installation
