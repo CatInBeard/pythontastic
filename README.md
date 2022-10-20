@@ -1,6 +1,6 @@
 # pythontastic
 Python online repl  
-[![uptime](https://img.shields.io/uptimerobot/ratio/m792899048-fe75220d9a0735c7d8a9a253)](https://stats.uptimerobot.com/Dl8Q0soGxj)  
+[![uptime](https://img.shields.io/uptimerobot/ratio/m792899048-fe75220d9a0735c7d8a9a253)](https://stats.uptimerobot.com/Dl8Q0soGxj) [![Maintainability](https://api.codeclimate.com/v1/badges/ab63a8863b44e9b7d171/maintainability)](https://codeclimate.com/github/CatInBeard/pythontastic/maintainability)   
 [pythontastic.space](https://pythontastic.space)  
 ![Repl example](https://pythontastic.space/img/terminal.png)
 ## Installation
