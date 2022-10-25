@@ -3,6 +3,7 @@
 namespace App\Repositories;
 
 use App\Interfaces\PytonRunRepositoryInterface;
+use App\Models\codeStatistics;
 
 class PytonRunRepository implements PytonRunRepositoryInterface 
 {
@@ -37,6 +38,9 @@ class PytonRunRepository implements PytonRunRepositoryInterface
         $outputParts = explode("\n",$output);
         array_shift($outputParts);
         $output = implode("\n", $outputParts);
+
+        codeStatistics::create(compact('code'));
+
         return [$output,$startTime,$endTime];
     }
 }
