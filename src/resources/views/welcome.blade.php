@@ -24,4 +24,18 @@
         <div class="col">
         </div>
     </div>
+    <div class="row mt-2">
+        <div class="col">
+        </div>
+        <div class="col-10">
+            <div class="card p-1 w-100">
+                <div class="card-body">
+                    <h5 class="card-title">Run your python code in telegram!</h5>
+                    <p class="card-text">Start chat with bot <a href="https://t.me/py_run_bot">@py_run_bot</a>.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+        </div>
+    </div>
 @stop
